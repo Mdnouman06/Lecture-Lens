@@ -127,3 +127,5 @@ For detailed instructions, troubleshooting, and keyboard navigation cheatsheets,
 ## 📄 License
 
 MIT License. Designed with Apple HIG elegance and Google Stitch design tokens for students worldwide.
+
+# Lecture-Lens
