@@ -1,0 +1,3 @@
+# Netlify / Cloudflare Pages SPA Client-Side Routing Fallback
+# Rewrites all incoming paths to index.html with HTTP 200 so React Router handles view state.
+/* /index.html 200

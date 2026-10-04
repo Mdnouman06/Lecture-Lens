@@ -1,0 +1,2055 @@
+/**
+ * LectureLens Advanced Study Tools Styling
+ * Implements Google Stitch Screen 57fae43921be497dac14f898c05ac626 (PYQ Intelligence)
+ * and Screen 1680b7e660454bfab5c78955d8803343 (Study Planner & Calendar).
+ * Strict Apple HIG Glassmorphism, 4px baseline grid, Poppins typography, and Tabular numerals.
+ */
+
+/* =============================================================================
+   1. Outer View Layout Containers
+   ============================================================================= */
+
+.pyq-container,
+.planner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  max-width: 1560px;
+  margin: 0 auto;
+  font-family: var(--font-sans, 'Poppins', sans-serif);
+  color: var(--color-on-surface, #1A1B22);
+}
+
+.adv-view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.adv-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.adv-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-on-surface-variant, #464555);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.adv-breadcrumb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(220, 38, 38, 0.08);
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.adv-view-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-on-surface, #1A1B22);
+  margin: 0;
+}
+
+.adv-view-subtitle {
+  font-size: 14px;
+  color: var(--color-on-surface-variant, #464555);
+  margin: 0;
+}
+
+.adv-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adv-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: var(--color-surface-container-lowest, #ffffff);
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  color: var(--color-on-surface, #1A1B22);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.adv-btn-secondary:hover {
+  background: var(--color-surface-container-low, #F4F2FD);
+  border-color: var(--color-outline, #777587);
+}
+
+.adv-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+  color: #ffffff;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+}
+
+.adv-btn-primary:hover {
+  background: linear-gradient(135deg, #4338ca 0%, #312e81 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+}
+
+/* =============================================================================
+   2. PYQ Bento Metrics Strip
+   ============================================================================= */
+
+.pyq-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .pyq-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pyq-bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pyq-bento-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--color-surface-container-lowest, #ffffff);
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pyq-bento-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.pyq-bento-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pyq-bento-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pyq-bento-icon-wrapper.indigo {
+  background: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+}
+
+.pyq-bento-icon-wrapper.emerald {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.pyq-bento-icon-wrapper.amber {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.pyq-bento-icon-wrapper.teal {
+  background: rgba(14, 165, 233, 0.1);
+  color: #0ea5e9;
+}
+
+.pyq-bento-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.pyq-bento-badge.positive {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.pyq-bento-badge.neutral {
+  background: rgba(79, 70, 229, 0.08);
+  color: #4338ca;
+}
+
+.pyq-bento-value {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+  color: var(--color-on-surface, #1A1B22);
+}
+
+.pyq-bento-value span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4f46e5;
+  margin-left: 6px;
+}
+
+.pyq-bento-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-on-surface-variant, #464555);
+}
+
+.pyq-bento-subtext {
+  font-size: 11px;
+  color: var(--color-outline, #777587);
+}
+
+.pyq-bento-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.pyq-bento-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* =============================================================================
+   3. PYQ Two-Column Split Layout
+   ============================================================================= */
+
+.pyq-split-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1080px) {
+  .pyq-split-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pyq-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pyq-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* =============================================================================
+   4. Paper Archive & OCR Verification
+   ============================================================================= */
+
+.pyq-archive-card {
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--color-surface-container-lowest, #ffffff);
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pyq-archive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pyq-archive-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pyq-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--color-on-surface, #1A1B22);
+  margin: 0;
+}
+
+.pyq-pills-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.pyq-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  background: var(--color-surface-container-low, #F4F2FD);
+  color: var(--color-on-surface-variant, #464555);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.pyq-pill:hover {
+  background: var(--color-surface-container, #EEEDF7);
+  border-color: var(--color-outline, #777587);
+}
+
+.pyq-pill.active {
+  background: #1A1B22;
+  color: #ffffff;
+  border-color: #1A1B22;
+}
+
+/* Primary Paper Card */
+.pyq-primary-paper {
+  border-radius: 16px;
+  background: linear-gradient(145deg, #f8f7ff 0%, #f1effb 100%);
+  border: 1px solid #dcd7fa;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+.pyq-paper-top-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pyq-ocr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #047857;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.pyq-paper-meta-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #dcd7fa;
+}
+
+.pyq-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pyq-meta-label {
+  font-size: 11px;
+  color: var(--color-outline, #777587);
+  font-weight: 500;
+}
+
+.pyq-meta-val {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+  color: var(--color-on-surface, #1A1B22);
+}
+
+/* Secondary papers list */
+.pyq-secondary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pyq-secondary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  background: var(--color-surface-container-lowest, #ffffff);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pyq-secondary-item:hover {
+  background: var(--color-surface-container-low, #F4F2FD);
+  border-color: #4f46e5;
+}
+
+.pyq-secondary-item.active {
+  background: #f5f3ff;
+  border-color: #818cf8;
+}
+
+.pyq-dropzone-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px dashed #c7c4d8;
+  background: #faf9ff;
+  color: #4f46e5;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pyq-dropzone-button:hover {
+  background: #f0edff;
+  border-color: #6366f1;
+}
+
+/* =============================================================================
+   5. Question Deep-Dive Inspector
+   ============================================================================= */
+
+.pyq-inspector-card {
+  padding: 26px;
+  border-radius: 20px;
+  background: var(--color-surface-container-lowest, #ffffff);
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pyq-inspector-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pyq-qnumber-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1B22;
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+}
+
+.pyq-marks-pill {
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: rgba(79, 70, 229, 0.1);
+  color: #4338ca;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.pyq-recurrence-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  color: #b45309;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.pyq-problem-statement {
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: #1A1B22;
+  background: #fbfbfe;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border-left: 4px solid #4f46e5;
+}
+
+/* Rubric Box */
+.pyq-rubric-box {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #f8f7ff;
+  border: 1px solid #e0dbfd;
+}
+
+.pyq-rubric-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #4338ca;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pyq-rubric-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.pyq-step-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pyq-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pyq-step-heading {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1B22;
+}
+
+.pyq-step-desc {
+  font-size: 13px;
+  color: #464555;
+  line-height: 1.5;
+}
+
+/* Pitfall Alert Card */
+.pyq-pitfall-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #fff5f5;
+  border: 1px solid #ffd4d4;
+  color: #991b1b;
+}
+
+.pyq-pitfall-icon {
+  color: #dc2626;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pyq-pitfall-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pyq-pitfall-title {
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pyq-pitfall-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #7f1d1d;
+}
+
+/* Jump Pill */
+.pyq-jump-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: #f0f7ff;
+  border: 1px solid #bae0fd;
+}
+
+.pyq-jump-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pyq-jump-label {
+  font-size: 12px;
+  color: #0369a1;
+  font-weight: 600;
+}
+
+.pyq-jump-timecode {
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+  font-size: 13px;
+  font-weight: 600;
+  color: #0284c7;
+}
+
+/* =============================================================================
+   6. Topic Weighting Matrix & Circular Dial
+   ============================================================================= */
+
+.pyq-matrix-card {
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--color-surface-container-lowest, #ffffff);
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pyq-weights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pyq-weight-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pyq-weight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.pyq-weight-title {
+  font-weight: 600;
+  color: #1A1B22;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.pyq-weight-percent {
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.pyq-weight-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #777587;
+}
+
+.pyq-weight-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.pyq-weight-badge.critical {
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
+}
+
+.pyq-weight-badge.mastered {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.pyq-weight-badge.good {
+  background: rgba(14, 165, 233, 0.1);
+  color: #0284c7;
+}
+
+.pyq-weight-badge.low {
+  background: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+}
+
+.pyq-weight-track {
+  width: 100%;
+  height: 8px;
+  background: #f1effb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.pyq-weight-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.pyq-weight-fill.critical {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.pyq-weight-fill.mastered {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.pyq-weight-fill.good {
+  background: linear-gradient(90deg, #0ea5e9, #0284c7);
+}
+
+.pyq-weight-fill.low {
+  background: linear-gradient(90deg, #94a3b8, #64748b);
+}
+
+/* Simulation Dial */
+.pyq-dial-box {
+  padding: 20px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1a1b22 0%, #2e2a4a 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pyq-dial-svg-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.pyq-dial-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.pyq-dial-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pyq-dial-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.pyq-dial-subtext {
+  font-size: 12px;
+  color: #a5b4fc;
+  line-height: 1.4;
+}
+
+/* =============================================================================
+   6b. Grouped Recurring Question Patterns (Level B Derived Intelligence)
+   ============================================================================= */
+
+.pyq-patterns-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.pyq-patterns-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pyq-pattern-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.pyq-pattern-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.05);
+}
+
+.pyq-pattern-header {
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.pyq-pattern-flame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #fff7ed;
+}
+
+.pyq-pattern-topic-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #334155;
+  letter-spacing: 0.02em;
+}
+
+.pyq-pattern-repeat-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.pyq-pattern-canonical-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.pyq-pattern-years-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.pyq-pattern-year-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+.pyq-pattern-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.pyq-pattern-toggle-btn:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.pyq-pattern-occurrences-drawer {
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pyq-occurrences-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pyq-occurrences-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pyq-occurrence-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pyq-occurrence-row:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px);
+}
+
+.pyq-occurrence-ref-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 110px;
+}
+
+.pyq-occurrence-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: #4338ca;
+  background: #eef2ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.pyq-occurrence-unit {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.pyq-occurrence-text-col {
+  flex: 1;
+}
+
+.pyq-occurrence-statement {
+  margin: 0;
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.4;
+}
+
+.pyq-occurrence-inspect-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.pyq-occurrence-inspect-btn:hover {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+}
+
+.pyq-empty-patterns {
+  padding: 32px 20px;
+  text-align: center;
+  background: #f8fafc;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =============================================================================
+   7. Study Planner & Urgency Ribbon
+   ============================================================================= */
+
+.planner-urgency-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  border-radius: 16px;
+  background: var(--color-surface-container-lowest, #ffffff);
+  border: 1px solid var(--color-outline-variant, #e2e8f0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+  gap: 20px;
+  min-height: 96px;
+  box-sizing: border-box;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.planner-urgency-ribbon.is-urgent {
+  background: linear-gradient(135deg, #fff1f2 0%, #fee2e2 100%);
+  border-color: #fecdd3;
+  box-shadow: 0 2px 8px rgba(225, 29, 72, 0.08);
+}
+
+.planner-urgency-ribbon.is-optimal {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border-color: #a7f3d0;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
+}
+
+/* Neutral Schedule Status (State A - Empty / No Exam) */
+.planner-status-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.planner-status-icon-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: #f4f2fd;
+  color: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(99, 102, 241, 0.1);
+}
+
+.planner-status-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.planner-status-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6366f1;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.planner-status-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.planner-status-desc {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
+  max-width: 560px;
+}
+
+.planner-status-aside {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.planner-status-add-exam-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.planner-status-divider {
+  width: 1px;
+  height: 42px;
+  background: #e2e8f0;
+  flex-shrink: 0;
+}
+
+/* Compact Daily Target (Shared across State A and B) */
+.planner-daily-target-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 185px;
+}
+
+.planner-target-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.planner-target-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.planner-target-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
+.planner-target-badge.is-empty {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.planner-target-badge.in-progress {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.planner-target-badge.is-complete {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.planner-target-value {
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.planner-target-empty-text {
+  font-family: var(--font-sans, inherit);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+.planner-target-bar-track {
+  width: 100%;
+  height: 4px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 1px;
+}
+
+.planner-target-bar-fill {
+  height: 100%;
+  background: #4f46e5;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.planner-target-bar-fill.is-complete {
+  background: #10b981;
+}
+
+/* Urgent / Priority State Elements (State B) */
+.planner-urgency-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.planner-urgency-icon-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.planner-urgency-icon-badge.is-urgent {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.planner-urgency-icon-badge.is-optimal {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.planner-urgency-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.planner-alert-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #e11d48;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.planner-urgency-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #881337;
+  line-height: 1.3;
+}
+
+.is-optimal .planner-urgency-title {
+  color: #065f46;
+}
+
+.planner-urgency-sub {
+  font-size: 13px;
+  color: #9f1239;
+  line-height: 1.35;
+}
+
+.is-optimal .planner-urgency-sub {
+  color: #047857;
+}
+
+.planner-urgency-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.planner-deficit-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(225, 29, 72, 0.15);
+  color: #be123c;
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.planner-autofill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #e11d48;
+  color: #ffffff;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.25);
+  white-space: nowrap;
+}
+
+.planner-autofill-btn:hover {
+  background: #be123c;
+  transform: translateY(-1px);
+}
+
+/* =============================================================================
+   8. 7-Day Schedule Canvas & Controls
+   ============================================================================= */
+
+.planner-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 8px;
+}
+
+.planner-view-switcher {
+  display: flex;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--color-surface-container-low, #F4F2FD);
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+}
+
+.planner-switcher-btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  color: #464555;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.planner-switcher-btn.active {
+  background: #ffffff;
+  color: #1A1B22;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.planner-main-split-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 24px;
+  align-items: start;
+  width: 100%;
+}
+
+@media (max-width: 1120px) {
+  .planner-main-split-grid {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.planner-calendar-card {
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--color-surface-container-lowest, #ffffff);
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.planner-grid-container {
+  display: grid;
+  grid-template-columns: 50px repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  min-height: 400px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 860px) {
+  .planner-grid-container {
+    grid-template-columns: 50px repeat(7, minmax(110px, 1fr));
+  }
+}
+
+.planner-time-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 40px;
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+  font-size: 11px;
+  color: #777587;
+  text-align: right;
+  padding-right: 6px;
+}
+
+.planner-day-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.planner-day-header {
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 10px;
+  background: #f4f2fd;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1A1B22;
+}
+
+.planner-day-header.today {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.planner-day-blocks-track {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  border-radius: 12px;
+  background: #faf9fe;
+  padding: 6px;
+  border: 1px dashed #e2e0f0;
+}
+
+.planner-open-slot-hover {
+  transition: all 0.2s ease;
+}
+
+.planner-open-slot-hover:hover {
+  background: #f1effb !important;
+  color: #4f46e5 !important;
+}
+
+/* Categorized Study Blocks */
+.planner-study-block {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid transparent;
+}
+
+.planner-study-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.planner-study-block.lecture {
+  background: #eef2ff;
+  border-left-color: #3525cd;
+  color: #1e1b4b;
+}
+
+.planner-study-block.fsrs {
+  background: #f0f9ff;
+  border-left-color: #006591;
+  color: #082f49;
+}
+
+.planner-study-block.deep {
+  background: #ecfdf5;
+  border-left-color: #005338;
+  color: #064e3b;
+}
+
+.planner-study-block.tutor {
+  background: #f5f3ff;
+  border-left-color: #4f46e5;
+  color: #2e1065;
+}
+
+.planner-study-block.exam {
+  background: #fff1f2;
+  border-left-color: #ba1a1a;
+  color: #881337;
+}
+
+.planner-study-block.autofilled {
+  border: 1px dashed #e11d48;
+  box-shadow: 0 2px 8px rgba(225, 29, 72, 0.15);
+}
+
+.planner-study-block.completed {
+  opacity: 0.65;
+  filter: grayscale(0.2);
+}
+
+.planner-study-block.completed .planner-block-title {
+  text-decoration: line-through;
+  opacity: 0.85;
+}
+
+.planner-day-card.completed {
+  opacity: 0.72;
+}
+
+.planner-day-card.completed .planner-card-title {
+  text-decoration: line-through;
+}
+
+.planner-completed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #ecfdf5;
+  color: #059669;
+  font-size: 10px;
+  font-weight: 700;
+  border: 1px solid #a7f3d0;
+}
+
+.planner-block-time {
+  font-family: var(--font-mono, 'SF Mono', 'JetBrains Mono', monospace);
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.planner-block-title {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Backlog & Legend */
+.planner-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid #f1effb;
+  font-size: 11px;
+  color: #464555;
+}
+
+.planner-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+/* =============================================================================
+   9. Mobile Day View & Agenda View Styles
+   ============================================================================= */
+
+.planner-day-view-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.planner-day-pills-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.planner-day-pills-row::-webkit-scrollbar {
+  display: none;
+}
+
+.planner-day-pill {
+  flex: 1;
+  min-width: 58px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 6px;
+  border-radius: 12px;
+  background: var(--color-surface-container-low, #F4F2FD);
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.planner-day-pill:hover {
+  background: var(--color-surface-container-high, #E8E7F1);
+}
+
+.planner-day-pill.active {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.planner-day-pill.active .pill-dayname,
+.planner-day-pill.active .pill-datenum {
+  color: #ffffff;
+}
+
+.pill-dayname {
+  font-size: 11px;
+  font-weight: 500;
+  color: #777587;
+  text-transform: uppercase;
+}
+
+.pill-datenum {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1B22;
+}
+
+.pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #10b981;
+  margin-top: 3px;
+}
+
+.planner-day-pill.active .pill-dot {
+  background: #ffffff;
+}
+
+.planner-day-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.planner-day-card {
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 5px solid transparent;
+}
+
+.planner-day-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.planner-day-card.lecture {
+  background: #f8faff;
+  border-left-color: #3525cd;
+}
+
+.planner-day-card.fsrs {
+  background: #f8fbff;
+  border-left-color: #006591;
+}
+
+.planner-day-card.deep {
+  background: #f6fdf9;
+  border-left-color: #005338;
+}
+
+.planner-day-card.tutor {
+  background: #faf8ff;
+  border-left-color: #4f46e5;
+}
+
+.planner-day-card.exam {
+  background: #fff8f8;
+  border-left-color: #ba1a1a;
+}
+
+.planner-day-card.autofilled {
+  border: 1.5px dashed #e11d48;
+}
+
+.planner-day-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.planner-card-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.planner-card-time {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  color: #464555;
+}
+
+.planner-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1A1B22;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.planner-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #777587;
+  padding-top: 4px;
+}
+
+.autofill-tag {
+  color: #e11d48;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.planner-empty-day {
+  padding: 36px 20px;
+  text-align: center;
+  border-radius: 16px;
+  background: #faf9fe;
+  border: 1px dashed #d5d3e6;
+  color: #464555;
+}
+
+/* Agenda View */
+.planner-agenda-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.planner-agenda-day-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.planner-agenda-day-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #f4f2fd;
+  font-size: 13px;
+  color: #1A1B22;
+}
+
+.planner-agenda-day-header.today {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.planner-agenda-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 8px;
+}
+
+.planner-agenda-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid var(--color-outline-variant, #C7C4D8);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-left: 4px solid transparent;
+}
+
+.planner-agenda-item:hover {
+  background: #faf9fe;
+  transform: translateX(2px);
+}
+
+.planner-agenda-item.lecture { border-left-color: #3525cd; }
+.planner-agenda-item.fsrs { border-left-color: #006591; }
+.planner-agenda-item.deep { border-left-color: #005338; }
+.planner-agenda-item.tutor { border-left-color: #4f46e5; }
+.planner-agenda-item.exam { border-left-color: #ba1a1a; }
+
+.agenda-time {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  color: #464555;
+  min-width: 90px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.agenda-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.agenda-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1B22;
+}
+
+.agenda-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #777587;
+}
+
+.agenda-open-slot {
+  font-size: 12px;
+  color: #a1a0b3;
+  padding: 8px 12px;
+  font-style: italic;
+}
+
+/* Responsive adjustments for Planner & PYQ */
+@media (max-width: 768px) {
+  .adv-view-title {
+    font-size: 22px;
+  }
+
+  .adv-header-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .adv-header-actions button,
+  .adv-header-actions label {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .planner-urgency-ribbon {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .planner-status-main,
+  .planner-urgency-left {
+    width: 100%;
+  }
+
+  .planner-status-aside,
+  .planner-urgency-actions {
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .planner-status-divider {
+    display: none;
+  }
+
+  .planner-autofill-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .planner-calendar-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .adv-breadcrumb {
+    font-size: 11px;
+    flex-wrap: wrap;
+  }
+
+  .planner-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .planner-view-switcher {
+    width: 100%;
+  }
+
+  .planner-status-aside,
+  .planner-urgency-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .planner-status-add-exam-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .planner-daily-target-compact {
+    width: 100%;
+  }
+}
+
+/* =============================================================================
+   12. PYQ Empty States & Notification Banners
+   ============================================================================= */
+
+.pyq-empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 440px;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.pyq-empty-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 620px;
+  padding: 48px 36px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.pyq-empty-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e0e7ff 0%, #ede9fe 100%);
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+}
+
+.pyq-empty-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e1b4b;
+  margin-bottom: 8px;
+}
+
+.pyq-empty-desc {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.pyq-empty-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.pyq-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #334155;
+  background: #f8fafc;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+

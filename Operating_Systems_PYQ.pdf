@@ -1,0 +1,22 @@
+%PDF-1.4
+1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj
+2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj
+3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >> endobj
+4 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj
+5 0 obj << /Length 1202 >>
+stream
+BT /F1 12 Tf 72 720 Td 16 TL (Operating Systems Examination Paper) ' (2024 Examination) ' (Unit I - Processes) ' (Q1. Explain process states and the process control block \(PCB\).) ' (Unit II - Memory Management) ' (Q2. Explain paging, pages, and frames with architecture diagrams.) ' (Q3. Explain LRU page replacement algorithm with an example page reference string.) ' (Q4. Discuss file allocation methods including contiguous, linked, and indexed.) ' (2023 Examination) ' (Unit I - Processes) ' (Q1. Describe process states and the process control block \(PCB\) structures.) ' (Q2. Explain paging / pages / frames memory translation mechanism.) ' (Unit II - Storage & Concurrency) ' (Q3. Explain virtual memory concepts and demand paging techniques.) ' (Q4. Describe deadlock conditions and the four necessary Coffman conditions.) ' (2022 Examination) ' (Unit I - Memory) ' (Q1. Explain LRU page replacement and evaluate its fault rate.) ' (Q2. Discuss virtual memory management and page fault handling.) ' (Unit II - File Systems & Deadlocks) ' (Q3. Explain file allocation schemes and compare contiguous vs indexed.) ' (Q4. Discuss deadlock conditions and avoidance using Banker's algorithm.) ' ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000229 00000 n 
+0000000298 00000 n 
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+1562
+%%EOF
